@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class LogControl : EnemyControl
 {
+    public Rigidbody2D myRigidbody;
+
+    [Header("Target Variables")]
+    public Transform target;
     public float chaseRadius;
     public float attackRadius;
-    public Rigidbody2D myRigidbody;
-    public Transform target;
     public Transform homePosition;
+
+    [Header("Animator")]
     public Animator myAnimator;
 
     // Start is called before the first frame update
@@ -46,7 +50,7 @@ public class LogControl : EnemyControl
         }
     }
 
-    private void SetAnimatorFloat(Vector2 setVector)
+    public void SetAnimatorFloat(Vector2 setVector)
     {
         myAnimator.SetFloat("moveX", setVector.x);
         myAnimator.SetFloat("moveY", setVector.y);
@@ -77,7 +81,7 @@ public class LogControl : EnemyControl
         }
     }
 
-    private void ChangeState(EnemyState newState)
+    public void ChangeState(EnemyState newState)
     {
         if(currentState != newState)
         {
